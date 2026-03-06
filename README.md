@@ -9,5 +9,7 @@ if you mind the "dangerous" exe file, you can download godot and import the sour
 ### Tutorial (will add into game someday (i hope))
 
 yellow note = hold
+
 white note = tap
+
 press keyboard keys according to the note
