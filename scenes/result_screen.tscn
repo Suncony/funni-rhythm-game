@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://csmwe4d4v7oof"]
+
+[ext_resource type="Script" uid="uid://bcy55jts6jt5y" path="res://scripts/result_screen.gd" id="1_y7kih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4stdu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4stdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7kih"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p64tj"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdjqi"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ResultScreen" type="Control" unique_id=1229275992]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y7kih")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1189500713]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ResultPanel" type="PanelContainer" parent="ColorRect" unique_id=1773640587]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -25.0
+offset_right = 27.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4stdu")
+
+[node name="ResultMargin" type="MarginContainer" parent="ColorRect/ResultPanel" unique_id=1221812285]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ResultVBox" type="VBoxContainer" parent="ColorRect/ResultPanel/ResultMargin" unique_id=1833784575]
+layout_mode = 2
+
+[node name="Rank" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1680206616]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 128
+
+[node name="Accuracy" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1575811335]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+
+[node name="HSeparator" type="HSeparator" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1706590817]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4stdu")
+
+[node name="ScoreHBox" type="HBoxContainer" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=171154446]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/ScoreHBox" unique_id=1300580752]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Score:"
+
+[node name="Count" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/ScoreHBox" unique_id=2101456707]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+
+[node name="HSeparator2" type="HSeparator" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1182254651]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4stdu")
+
+[node name="PerfectHBox" type="HBoxContainer" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1617515543]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PerfectLabel" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/PerfectHBox" unique_id=520133186]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "PERFECT:"
+
+[node name="Count" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/PerfectHBox" unique_id=995763651]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+
+[node name="GoodHBox" type="HBoxContainer" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1933901957]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GoodLabel" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/GoodHBox" unique_id=524709299]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "GOOD:"
+
+[node name="Count" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/GoodHBox" unique_id=2096522118]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+
+[node name="BadHBox" type="HBoxContainer" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=676237337]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Bad" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/BadHBox" unique_id=1664720531]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.8249593, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "BAD:"
+
+[node name="Count" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/BadHBox" unique_id=339679746]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+
+[node name="MissHBox" type="HBoxContainer" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox" unique_id=1321888662]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Miss" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/MissHBox" unique_id=76352400]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.76487833, 0.5563933, 0.30353206, 1)
+theme_override_font_sizes/font_size = 24
+text = "MISS:"
+
+[node name="Count" type="Label" parent="ColorRect/ResultPanel/ResultMargin/ResultVBox/MissHBox" unique_id=698276989]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+
+[node name="BackMargin" type="MarginContainer" parent="ColorRect" unique_id=1687568119]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 150.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="BackButton" type="Button" parent="ColorRect/BackMargin" unique_id=1423818992]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7kih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p64tj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rdjqi")
+text = "Back"
+
+[connection signal="pressed" from="ColorRect/BackMargin/BackButton" to="." method="_on_back_button_pressed"]

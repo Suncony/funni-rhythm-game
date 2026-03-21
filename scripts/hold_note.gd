@@ -1,7 +1,7 @@
 extends Node2D
 
 const APPROACH_TIME = 1.0
-const HIT_MS = 0.2
+const HIT_MS = 0.25
 const NOTE_RADIUS = 40.0
 const APPROACH_RADIUS = 100.0
 const EARLY_RELEASE_TOLERANCE = 0.12

@@ -1,10 +1,7 @@
 extends Node2D
 
-const APPROACH_TIME = 1.0
 
-@onready var hit_sound: AudioStreamPlayer = $HitSound
-@onready var music: AudioStreamPlayer = $RiseOfTheJadeDragon
-@onready var score_label: Label = $"../../../../MarginContainer2/ScoreLabel"
+const APPROACH_TIME = 1.0
 
 var tap_note_scene := preload("res://scenes/tap_note.tscn")
 var hold_note_scene := preload("res://scenes/hold_note.tscn")
@@ -15,23 +12,49 @@ var used_keys := []
 var all_notes := []			# ARRAY OF NOTE DATA
 var current_notes := []		# ARRAY OF SPAWNED NOTE NODES
 var note_index: int = 0
+var total_notes: int
 
 var song_time: float = 0.0
 var score: int = 0
 
+var perfect_count:int = 0
+var good_count:int = 0
+var bad_count:int = 0
+var miss_count:int = 0
+
+@onready var audio_player: AudioStreamPlayer = $AudioPlayer
+@onready var hit_sound: AudioStreamPlayer = $HitSound
+
 func _ready() -> void:
-	var level_data: Dictionary = load_level("res://songs/RiseOfTheJadeDragon/level.json")
-	all_notes = level_data["notes"]
-	music.play()
+	var song = SongManager.selected_song
+
+	var base_path = song["path"]
+	var audio_path = base_path + "audio.mp3"
+	var chart_path = base_path + "level.json"
+
+	# LOAD AUDIO
+	audio_player.stream = load(audio_path)
+	audio_player.play()
+
+	# LOAD CHART
+	var chart = load_level(chart_path)
+	all_notes = chart["notes"]
+	total_notes = all_notes.size()
+
+	SongManager.selected_song = {}
 
 func _process(delta: float) -> void:
 	song_time = get_song_time()
+
 	if note_index < all_notes.size() and song_time >= all_notes[note_index]["time"] - APPROACH_TIME:
 		if all_notes[note_index]["hold"] == 0.0:
 			spawn_tap_note(all_notes[note_index])
 		else:
 			spawn_hold_note(all_notes[note_index])
 		note_index += 1
+
+	if song_ended():
+		show_result()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.echo:
@@ -58,8 +81,14 @@ func handle_note_hit(key: String) -> void:		# HANDLES DUPLICATE KEYS
 	candidates.sort_custom(func(a, b): return a.time > b.time)
 	candidates[0].register_hit()
 
+func song_ended() -> bool:
+	if not audio_player.playing:
+		return true
+	else:
+		return false
+
 func get_song_time() -> float:
-	var playback := music.get_playback_position()
+	var playback := audio_player.get_playback_position()
 	var mix := AudioServer.get_time_since_last_mix()
 	var latency := AudioServer.get_output_latency()
 	return playback + mix - latency
@@ -102,11 +131,45 @@ func add_score(result: String) -> void:
 	match result:
 		"PERFECT":
 			score += 100
+			perfect_count += 1
 		"GOOD":
 			score += 80
+			good_count += 1
 		"BAD":
 			score += 50
+			bad_count += 1
 		"MISS":
 			score += 0
+			miss_count += 1
+
+func compute_accuracy() -> float:
+	var max_score: float = total_notes * 100.0
+	return float(score) / max_score * 100.0
+
+func get_rank(accuracy: float) -> String:
+	if accuracy >= 95.0:
+		return "S"
+	elif accuracy >= 90.0:
+		return "A"
+	elif accuracy >= 80:
+		return "B"
+	elif accuracy >= 50:
+		return "C"
+	else:
+		return "F"
+
+func show_result() -> void:
+	var accuracy: float = compute_accuracy()
+	var rank: String = get_rank(accuracy)
+
+	ResultManager.accuracy = accuracy
+	ResultManager.rank = rank
 	
-	score_label.text = "Score: " + str(score)
+	ResultManager.score = score
+	
+	ResultManager.perfect_count = perfect_count
+	ResultManager.good_count = good_count
+	ResultManager.bad_count = bad_count
+	ResultManager.miss_count = miss_count
+
+	get_tree().change_scene_to_file("res://scenes/result_screen.tscn")

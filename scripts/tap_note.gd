@@ -1,9 +1,10 @@
 extends Node2D
 
+
 const APPROACH_TIME = 1.0
-const PERFECT_MS = 0.05
-const GOOD_MS = 0.12
-const BAD_MS = 0.2
+const PERFECT_MS = 0.06
+const GOOD_MS = 0.15
+const BAD_MS = 0.25
 const NOTE_RADIUS = 40.0
 const APPROACH_RADIUS = 100.0
 

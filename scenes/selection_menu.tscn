@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bwoqpyjtyiaee"]
+
+[ext_resource type="Script" uid="uid://e8p72f6glq0t" path="res://scripts/selection_menu.gd" id="1_4068k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d0uu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4068k"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i4el"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="SelectionMenu" type="Control" unique_id=768578235]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4068k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=65989637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackMargin" type="MarginContainer" parent="ColorRect" unique_id=1096368246]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 150.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="BackButton" type="Button" parent="ColorRect/BackMargin" unique_id=1717510522]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_4d0uu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4068k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6i4el")
+text = "Back"
+
+[node name="SongMargin" type="MarginContainer" parent="ColorRect" unique_id=89794233]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="SongVBox" type="VBoxContainer" parent="ColorRect/SongMargin" unique_id=463097337]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[connection signal="pressed" from="ColorRect/BackMargin/BackButton" to="." method="_on_back_button_pressed"]

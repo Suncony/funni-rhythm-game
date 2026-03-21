@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://blw718tg8cmpl"]
+[gd_scene format=3 uid="uid://blw718tg8cmpl"]
 
 [ext_resource type="Texture2D" uid="uid://cvjp7su5aha6n" path="res://assets/characters/player_idle.png" id="1_8cyjk"]
 [ext_resource type="Texture2D" uid="uid://djtulj8e038i" path="res://assets/characters/player_miss.png" id="2_uemyl"]
@@ -226,11 +226,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="FPTMan" type="Node2D"]
+[node name="FPTMan" type="Node2D" unique_id=2069697948]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1960041209]
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_kjkpi")
-animation = &"miss"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.23663706

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjsjc3xnkajq2"]
+[gd_scene format=3 uid="uid://cjsjc3xnkajq2"]
 
 [ext_resource type="Script" uid="uid://dlbq7tkgetd1j" path="res://scripts/gameplay.gd" id="1_7biu0"]
 [ext_resource type="AudioStream" uid="uid://uw6vh5xbiscs" path="res://assets/sfx/hit_sound.mp3" id="2_00tan"]
-[ext_resource type="AudioStream" uid="uid://cuupf115brr6o" path="res://songs/RiseOfTheJadeDragon/Rise_of_the_Jade_Dragon.mp3" id="3_l1v76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7biu0"]
 bg_color = Color(0, 0, 0, 1)
@@ -12,13 +11,13 @@ border_width_right = 7
 border_width_bottom = 7
 anti_aliasing = false
 
-[node name="Gameplay" type="Control"]
+[node name="Gameplay" type="Control" unique_id=1810060797]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=475835212]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -35,12 +34,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1921866162]
 handle_input_locally = false
 size = Vector2i(900, 900)
 render_target_update_mode = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/SubViewport"]
+[node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/SubViewport" unique_id=30933451]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,13 +47,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7biu0")
 
-[node name="GameplayArea" type="Node2D" parent="SubViewportContainer/SubViewport"]
+[node name="GameplayArea" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1375776207]
 script = ExtResource("1_7biu0")
 
-[node name="HitSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/GameplayArea"]
+[node name="HitSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/GameplayArea" unique_id=1654887654]
 stream = ExtResource("2_00tan")
 bus = &"SFX"
 
-[node name="RiseOfTheJadeDragon" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/GameplayArea"]
-stream = ExtResource("3_l1v76")
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/GameplayArea" unique_id=588639912]
 volume_db = -20.0

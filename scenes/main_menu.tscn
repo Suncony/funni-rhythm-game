@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2mbi3amv4oh0"]
+[gd_scene format=3 uid="uid://c2mbi3amv4oh0"]
 
 [ext_resource type="Texture2D" uid="uid://hwqdwgoprmq6" path="res://assets/images/SSG_background.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://qlg01sqci6mv" path="res://scripts/main_menu.gd" id="1_bqqt6"]
@@ -70,7 +70,7 @@ shadow_color = Color(0.09019608, 0.08627451, 0.09019608, 0.7294118)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dy7ct"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1822542060]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bqqt6")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=648585410]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_jix8l")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=752916165]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,7 +102,7 @@ offset_bottom = 83.1875
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer" unique_id=736185926]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -120,7 +120,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer" unique_id=27303546]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -139,7 +139,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_nlkkf")
 text = "Options
 "
 
-[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer" unique_id=247130520]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -157,7 +157,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8qtwp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dy7ct")
 text = "Exit"
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=1599400825]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

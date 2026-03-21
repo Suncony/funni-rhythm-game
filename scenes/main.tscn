@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://duwqc4q1dkvji"]
+[gd_scene format=3 uid="uid://duwqc4q1dkvji"]
 
 [ext_resource type="Script" uid="uid://mhinr7tcn3ck" path="res://scripts/main_area.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cjsjc3xnkajq2" path="res://scenes/gameplay.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://blw718tg8cmpl" path="res://scenes/fpt_man.tscn" id="3_sugp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -39,11 +40,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=2052530701]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=2139426803]
 
-[node name="MainArea" type="Control" parent="UI"]
+[node name="MainArea" type="Control" parent="UI" unique_id=1821104634]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wfyh")
 
-[node name="Background" type="ColorRect" parent="UI/MainArea"]
+[node name="Background" type="ColorRect" parent="UI/MainArea" unique_id=37724103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Gameplay" parent="UI/MainArea" instance=ExtResource("1_o5qli")]
+[node name="Gameplay" parent="UI/MainArea" unique_id=2068215833 instance=ExtResource("1_o5qli")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,7 +72,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainArea"]
+[node name="BackContainer" type="MarginContainer" parent="UI/MainArea" unique_id=1506219578]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -86,7 +87,7 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="BackButton" type="Button" parent="UI/MainArea/MarginContainer"]
+[node name="BackButton" type="Button" parent="UI/MainArea/BackContainer" unique_id=1372038390]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -97,19 +98,36 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_0wfyh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sugp2")
 text = "Back"
 
-[node name="MarginContainer2" type="MarginContainer" parent="UI/MainArea"]
+[node name="MainCharContainer" type="MarginContainer" parent="UI/MainArea" unique_id=2051676007]
 layout_mode = 1
-offset_right = 202.0
-offset_bottom = 145.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+theme_override_constants/margin_left = 200
 
-[node name="ScoreLabel" type="Label" parent="UI/MainArea/MarginContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/MainArea/MainCharContainer" unique_id=397488865]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "Score: 0"
+size_flags_vertical = 8
 
-[connection signal="pressed" from="UI/MainArea/MarginContainer/BackButton" to="UI/MainArea" method="_on_back_button_pressed"]
+[node name="FPTMan" parent="UI/MainArea/MainCharContainer/CenterContainer" unique_id=1503358600 instance=ExtResource("3_sugp2")]
+position = Vector2(0, 100)
+scale = Vector2(5, 5)
+
+[node name="BossContainer" type="MarginContainer" parent="UI/MainArea" unique_id=1203514108]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/MainArea/BossContainer" unique_id=1410903250]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="pressed" from="UI/MainArea/BackContainer/BackButton" to="UI/MainArea" method="_on_back_button_pressed"]
