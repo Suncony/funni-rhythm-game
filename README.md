@@ -12,4 +12,4 @@ yellow note = hold
 
 white note = tap
 
-press keyboard keys according to the note
+press keyboard keys accordingly to the note
