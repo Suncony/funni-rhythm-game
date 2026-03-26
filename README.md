@@ -12,7 +12,7 @@ press keyboard keys accordingly to the note
 
 ### Platforms
 
-currently only available on PC, you can download it in the Releases section
+currently only available on PC, you can download it [here](https://github.com/Suncony/funni-rhythm-game/releases)
 
 ### Help us out
 
