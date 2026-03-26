@@ -2,17 +2,13 @@
 
 a keyboard-focused rhythm game, created as a university project
 
-### Tutorial (will add into game someday (i hope))
+### Installation
 
-yellow note = hold
-
-white note = tap
-
-press keyboard keys accordingly to the note
+download the game [here](https://github.com/Suncony/funni-rhythm-game/releases), then extract and run the executable file
 
 ### Platforms
 
-currently only available on PC, you can download it [here](https://github.com/Suncony/funni-rhythm-game/releases)
+only available on PC 
 
 ### Help us out
 
